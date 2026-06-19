@@ -3,22 +3,7 @@ import CalificacionesRepository from '../repositories/calificaciones-repository.
 import AlumnosService from './alumnos-service.js';
 import MateriasService from './materias-service.js';
 
-function calcularEdad(fechaNacimiento) {
-    if (!fechaNacimiento) return null;
-    const hoy = new Date();
-    const nacimiento = new Date(fechaNacimiento);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    const mesDiff = hoy.getMonth() - nacimiento.getMonth();
-    if (mesDiff < 0 || (mesDiff === 0 && hoy.getDate() < nacimiento.getDate())) {
-        edad--;
-    }
-    return edad;
-}
 
-function agregarEdad(alumno) {
-    if (!alumno) return alumno;
-    return { ...alumno, edad: calcularEdad(alumno.fecha_nacimiento) };
-}
 
 export default class AlumnosService {
     constructor() {
